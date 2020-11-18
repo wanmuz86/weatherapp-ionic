@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="danger">
     <ion-title>
-      Blank
+      Weather app
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,12 +9,29 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">Weather</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div>
+
+    <ion-item>
+      <ion-label position="floating">Enter City name</ion-label>
+      <ion-input [(ngModel)]="city"></ion-input>  
+    </ion-item>
+    <ion-button expand="block" (click)="searchPressed()" color="danger">Search</ion-button>
+
+    <ion-card *ngIf="weather">
+      <div style="text-align: center">
+        <h3>{{weather.dt}}</h3>
+        <img src="https://openweathermap.org/img/wn/02d@2x.png
+        ">
+        <p>{{weather.weather[0].main}}</p>
+        <p>{{weather.main.temp - 273.15}} C</p>
+        <p>Pressure</p>
+        <p>Humidity</p>
+        <p></p>
+      </div>
+    </ion-card>
   </div>
 </ion-content>
